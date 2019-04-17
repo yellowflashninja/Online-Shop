@@ -1,0 +1,21 @@
+Pokemon Trading Cards
+200
+25.99
+Running Shoes
+50
+87.88
+Chess
+256
+23.09
+Sweater
+60
+12.60
+Water
+100
+10.00
+VGA Cable
+123
+18.80
+Nintendo Switch
+101
+249.99
