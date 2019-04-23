@@ -16,6 +16,9 @@ public class Items {
 		this.numStock = stock;
 		this.cost = cost;
 	}
+	
+	
+	
 
 	/**
 	 * @return the numStock

@@ -14,11 +14,10 @@ public class Account {
 		
 	}
 	
-	public Account(String user, String pass, String name, Cart cart) {
+	public Account(String user, String pass, String name) {
 		this.username = user;
 		this.password = pass;
 		this.name = name;
-		this.shoppingCart = cart;
 	}
 	
 	

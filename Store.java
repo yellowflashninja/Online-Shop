@@ -7,9 +7,10 @@ import java.util.*;
 
 public class Store {
 	private ArrayList<Items> itemList;
-	
+	private ArrayList<Account> database;
 	public Store() {
 		itemList = new ArrayList<Items>();
+		database = new ArrayList<Account>();
 	}
 	
 	public void inputItems() throws IOException, FileNotFoundException {
@@ -30,6 +31,36 @@ public class Store {
             itemList.add(newItem);
       
 		}
+	}
+	
+	public void addToDatabase(Account newAcc) {
+		this.database.add(newAcc);
+		
+	}
+	
+	public boolean inDatabase(String user, String pass) {
+		for(Account temp: this.database) {
+			if(user.equals(temp.getUsername()) && pass.equals(temp.getPassword())) {
+				return true;
+			
+			}
+		}
+		return false;
+		
+	}
+	
+	/**
+	 * @return the database
+	 */
+	public ArrayList<Account> getDatabase() {
+		return database;
+	}
+
+	/**
+	 * @param database the database to set
+	 */
+	public void setDatabase(ArrayList<Account> database) {
+		this.database = database;
 	}
 
 	/**
