@@ -4,17 +4,51 @@ public class Items {
 	private int numStock;
 	private String name;
 	private double cost;
+	private static int catNum = 0;
+	private int itemNum;
 	
 	public Items() {
 		numStock = 0;
 		name = "";
 		cost = 0;
+		itemNum = catNum;
+		catNum++;
 	}
 	
+	/**
+	 * @return the catNum
+	 */
+	public static int getCatNum() {
+		return catNum;
+	}
+
+	/**
+	 * @param catNum the catNum to set
+	 */
+	public static void setCatNum(int catNum) {
+		Items.catNum = catNum;
+	}
+
+	/**
+	 * @return the itemNum
+	 */
+	public int getItemNum() {
+		return itemNum;
+	}
+
+	/**
+	 * @param itemNum the itemNum to set
+	 */
+	public void setItemNum(int itemNum) {
+		this.itemNum = itemNum;
+	}
+
 	public Items(String name, int stock, double cost) {
 		this.name = name;
 		this.numStock = stock;
 		this.cost = cost;
+		itemNum = catNum;
+		catNum++;
 	}
 	
 	

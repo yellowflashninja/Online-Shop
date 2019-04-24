@@ -14,7 +14,7 @@ public class Cart {
 	public String toString() {
 		String str = "";
 		for(Items temp: shopCart) {
-			str += temp.getName() + "\t\t\t" + temp.getCost() + "\n";
+			str += temp.getName() + "\t\t\t\t" + temp.getCost() + "\n";
 		}
 		return str;
 	}

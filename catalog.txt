@@ -1,7 +1,7 @@
-Trading Cards
+Cards
 200
 25.99
-Running Shoes
+Shoes
 50
 87.88
 Chess
@@ -16,6 +16,6 @@ Water
 VGA Cable
 123
 18.80
-Nintendo Switch
+Nintendo Wii
 101
 249.99

@@ -5,12 +5,16 @@ public class Account {
 	private String password;
 	private String name;
 	private Cart shoppingCart;
+	private static int aNum;
+	private int accNum;
 	
 	
 	public Account(){
 		username = "";
 		password = "";
 		name = "";
+		accNum = aNum;
+		aNum++;
 		
 	}
 	
@@ -18,10 +22,40 @@ public class Account {
 		this.username = user;
 		this.password = pass;
 		this.name = name;
+		accNum = aNum;
+		aNum++;
 	}
 	
 	
-	
+
+	/**
+	 * @return the aNum
+	 */
+	public static int getaNum() {
+		return aNum;
+	}
+
+	/**
+	 * @param aNum the aNum to set
+	 */
+	public static void setaNum(int aNum) {
+		Account.aNum = aNum;
+	}
+
+	/**
+	 * @return the accNum
+	 */
+	public int getAccNum() {
+		return accNum;
+	}
+
+	/**
+	 * @param accNum the accNum to set
+	 */
+	public void setAccNum(int accNum) {
+		this.accNum = accNum;
+	}
+
 	/**
 	 * @return the username
 	 */
