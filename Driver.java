@@ -35,13 +35,15 @@ public class Driver {
 						choice = kb.nextLine();
 						if(choice.equals("1")) {
 							for(Items temp: myStore.getItemList()) {
-								System.out.println(temp.getItemNum() + "  " + temp.getName() + "\t\t\t\t" + dfMoney.format(temp.getCost()));
+								System.out.println("#\tItem Name\t\t\t\tCost\t\t# in Stock");
+								System.out.println(temp.getItemNum() + "\t" + temp.getName() + "\t\t\t\t" + dfMoney.format(temp.getCost()));
 							}
 							System.out.println("Would you like to buy something? (Enter y/n)");
 							select = kb.nextLine();
 							if(select.equals("y")) {
 								System.out.println("Select the item you would like to buy by typing in its number");
 								select = kb.nextLine();
+								
 							}
 							
 						}
