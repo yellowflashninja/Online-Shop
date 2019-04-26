@@ -15,10 +15,11 @@ public class Driver {
 		Store myStore = new Store();
 		myStore.inputItems();
 		boolean done = false;
-		boolean dn = false;
+		
 		
 		System.out.println("Welcome to JC Store"); 
 		while(!done) {
+			boolean dn = false;
 			System.out.println("1. Sign in\n2. New Account\n3. Exit Store");
 			choice = kb.nextLine();
 			if(choice.equals("1")) {
@@ -34,16 +35,16 @@ public class Driver {
 						System.out.println("What would you like to do?\n1. Catalog\n2. See Cart\n3. Checkout\n4. Logout");
 						choice = kb.nextLine();
 						if(choice.equals("1")) {
+							System.out.println("Item Name\t\t\tCost\t\t# in Stock");
 							for(Items temp: myStore.getItemList()) {
-								System.out.println("#\tItem Name\t\t\t\tCost\t\t# in Stock");
-								System.out.println(temp.getItemNum() + "\t" + temp.getName() + "\t\t\t\t" + dfMoney.format(temp.getCost()));
+								System.out.println(temp.getName() + "\t\t\t\t" + dfMoney.format(temp.getCost()) + "\t\t" + temp.getNumStock());
 							}
 							System.out.println("Would you like to buy something? (Enter y/n)");
 							select = kb.nextLine();
 							if(select.equals("y")) {
-								System.out.println("Select the item you would like to buy by typing in its number");
+								System.out.println("Select the item you would like to buy by typing in the full item name");
 								select = kb.nextLine();
-								
+								System.out.println("One " + select + " was added to cart");
 							}
 							
 						}
@@ -68,9 +69,12 @@ public class Driver {
 				myStore.addToDatabase(new Account(username, password, name));
 				System.out.println("Please log back in");
 			}
-			else {
+			else if(choice.equals("3")){
 				done = true;
 				System.out.println("Thank you for using JC Store. See you next time.");
+			}
+			else {
+				System.out.println("Please type in a number between 1 and 3");
 			}
 		}
 	 }
