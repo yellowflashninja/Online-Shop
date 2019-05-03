@@ -5,7 +5,7 @@ public class Account {
 	private String password;
 	private String name;
 	private Cart shoppingCart;
-	private static int aNum;
+	private static int aNum = 0;
 	private int accNum;
 	
 	

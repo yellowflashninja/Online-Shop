@@ -19,11 +19,15 @@ public class Cart {
 		return str;
 	}
 	
-	public void addCart(Items x) {
-		shopCart.add(x);
-	}
+	
+	
 	
 	public ArrayList<Items> getCart() {
 		return shopCart;
+	}
+
+	public void add(Items items) {
+		shopCart.add(items);
+		
 	}
 }

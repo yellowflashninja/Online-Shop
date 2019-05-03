@@ -9,8 +9,9 @@ public class Driver {
 	 public static void main(String[] args) throws FileNotFoundException, IOException {
 		DecimalFormat dfMoney  = new DecimalFormat ("$###,###,###,##0.00");
 		Scanner kb = new Scanner(System.in);
-		String choice;
-		String select;
+		String choice, select, currentUser;
+		Items item;
+		int userInd = 0, itemInd = 0;
 		
 		Store myStore = new Store();
 		myStore.inputItems();
@@ -30,6 +31,12 @@ public class Driver {
 				pass = kb.nextLine();
 				if(myStore.inDatabase(user, pass)) {
 					System.out.println("Welcome back, " + user);
+					currentUser = user;
+					for(Account temp: myStore.getDatabase()) {
+						if(temp.getUsername().equals(currentUser)) {
+							userInd = temp.getAccNum();
+						}
+					}
 					
 					while(!dn) {
 						System.out.println("What would you like to do?\n1. Catalog\n2. See Cart\n3. Checkout\n4. Logout");
@@ -44,8 +51,22 @@ public class Driver {
 							if(select.equals("y")) {
 								System.out.println("Select the item you would like to buy by typing in the full item name");
 								select = kb.nextLine();
-								System.out.println("One " + select + " was added to cart");
+								System.out.println("One \"" + select + "\" was added to cart");
+								for(Items temp: myStore.getItemList()) {
+									if(temp.getName().equalsIgnoreCase(select)) {
+										itemInd = temp.getItemNum();
+									}
+								}
+								item = myStore.getItemList().get(itemInd);
+								myStore.getDatabase().get(userInd).getShoppingCart().add(item);
+								
 							}
+						}
+						else if(choice.equals("2")) {
+							System.out.println(myStore.getDatabase().get(userInd).getShoppingCart());
+						}
+						else if(choice.equals("3")) {
+							System.out.println("YOUR BILL:");
 							
 						}
 						else {
@@ -77,6 +98,17 @@ public class Driver {
 				System.out.println("Please type in a number between 1 and 3");
 			}
 		}
+		
+		
 	 }
+	/** public static Account findAcc(Store myStore, String user) {
+			for(Account temp: myStore.getDatabase()) {
+				if(temp.getUsername().equals(user)) {
+					return temp;
+				}
+			}
+			return null;
+		}
+	*/
 
 }
