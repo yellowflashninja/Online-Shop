@@ -49,6 +49,15 @@ public class Store {
 		
 	}
 	
+	public boolean inStore(String item) {
+		for(Items temp: this.itemList) {
+			if(item.equals(temp.getName())){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	
 	
 	/**
@@ -78,5 +87,7 @@ public class Store {
 	public void setItemList(ArrayList<Items> itemList) {
 		this.itemList = itemList;
 	}
+	
+	
 	
 }

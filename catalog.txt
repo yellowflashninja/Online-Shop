@@ -13,9 +13,9 @@ Sweater
 Water
 100
 10.00
-VGA Cable
+Book
 123
 18.80
-Nintendo Wii
+Wii
 101
 249.99

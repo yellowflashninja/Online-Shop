@@ -3,10 +3,10 @@ package finalproj;
 import java.io.*;
 import java.text.*;
 import java.util.*;
-
+import java.lang.*;
 
 public class Driver {
-	 public static void main(String[] args) throws FileNotFoundException, IOException {
+	 public static void main(String[] args) throws FileNotFoundException, IOException, NullPointerException {
 		DecimalFormat dfMoney  = new DecimalFormat ("$###,###,###,##0.00");
 		Scanner kb = new Scanner(System.in);
 		String choice, select, currentUser;
@@ -49,16 +49,28 @@ public class Driver {
 							System.out.println("Would you like to buy something? (Enter y/n)");
 							select = kb.nextLine();
 							if(select.equals("y")) {
-								System.out.println("Select the item you would like to buy by typing in the full item name");
+								System.out.println("Select the item you would like to buy by typing in the full item name (Case sensitive)");
 								select = kb.nextLine();
-								System.out.println("One \"" + select + "\" was added to cart");
-								for(Items temp: myStore.getItemList()) {
-									if(temp.getName().equalsIgnoreCase(select)) {
-										itemInd = temp.getItemNum();
+								if(myStore.inStore(select)) {
+									for(Items temp: myStore.getItemList()) {
+										if(temp.getName().equalsIgnoreCase(select)) {
+											itemInd = temp.getItemNum();
+										}
+									}
+									if(myStore.getItemList().get(itemInd).getNumStock() <= 0) {
+										System.out.println("No more \"" + select + "\" in stock");
+										
+									}
+									else {
+										myStore.getItemList().get(itemInd).setNumStock(myStore.getItemList().get(itemInd).getNumStock()-1);
+										item = myStore.getItemList().get(itemInd);
+										myStore.getDatabase().get(userInd).addToCart(item);
+										System.out.println("One \"" + select + "\" was added to cart");
 									}
 								}
-								item = myStore.getItemList().get(itemInd);
-								myStore.getDatabase().get(userInd).getShoppingCart().add(item);
+								else {
+									System.out.println("Item not found");
+								}
 								
 							}
 						}
@@ -66,11 +78,25 @@ public class Driver {
 							System.out.println(myStore.getDatabase().get(userInd).getShoppingCart());
 						}
 						else if(choice.equals("3")) {
-							System.out.println("YOUR BILL:");
+							String card = "", finalDec = "";
+							Cart x = myStore.getDatabase().get(userInd).getShoppingCart();
 							
+							System.out.println("YOUR BILL:");
+							System.out.println(myStore.getDatabase().get(userInd).getShoppingCart());
+							System.out.println("Please enter your credit card information\nCard Number:");
+							card = kb.nextLine();
+							System.out.println("Are you sure you want to proceed? (y/n)");
+							finalDec = kb.nextLine();
+							if(finalDec.equals("y")) {
+								System.out.println("Your items have been billed to " + card +". Thank you for shopping at JC Store!");
+								x.getCart().clear();
+							}	
+						}
+						else if(choice.equals("4")){
+							dn = true;
 						}
 						else {
-							dn = true;
+							System.out.println("Please type in a number between 1-4");
 						}
 					}
 				}
@@ -101,14 +127,4 @@ public class Driver {
 		
 		
 	 }
-	/** public static Account findAcc(Store myStore, String user) {
-			for(Account temp: myStore.getDatabase()) {
-				if(temp.getUsername().equals(user)) {
-					return temp;
-				}
-			}
-			return null;
-		}
-	*/
-
 }

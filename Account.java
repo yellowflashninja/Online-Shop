@@ -22,6 +22,7 @@ public class Account {
 		this.username = user;
 		this.password = pass;
 		this.name = name;
+		shoppingCart = new Cart();
 		accNum = aNum;
 		aNum++;
 	}
@@ -103,6 +104,10 @@ public class Account {
 	 */
 	public Cart getShoppingCart() {
 		return shoppingCart;
+	}
+	
+	public void addToCart(Items item) {
+		this.getShoppingCart().add(item);		
 	}
 
 	/**
