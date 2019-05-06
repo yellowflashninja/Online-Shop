@@ -14,6 +14,15 @@ public class Items {
 		itemNum = catNum;
 		catNum++;
 	}
+
+	public Items(String name, int stock, double cost) {
+		this.name = name;
+		this.numStock = stock;
+		this.cost = cost;
+		itemNum = catNum;
+		catNum++;
+	}
+	
 	
 	/**
 	 * @return the catNum
@@ -42,17 +51,6 @@ public class Items {
 	public void setItemNum(int itemNum) {
 		this.itemNum = itemNum;
 	}
-
-	public Items(String name, int stock, double cost) {
-		this.name = name;
-		this.numStock = stock;
-		this.cost = cost;
-		itemNum = catNum;
-		catNum++;
-	}
-	
-	
-	
 
 	/**
 	 * @return the numStock

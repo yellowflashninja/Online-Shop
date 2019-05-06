@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Cart {
 	DecimalFormat dfMoney  = new DecimalFormat ("$###,###,###,###0.00");
-	
+	final int ZERO = 0;
 	
 	private ArrayList<Items> shopCart;
 
@@ -16,7 +16,7 @@ public class Cart {
 	
 	public String toString() {
 		String str = "";
-		double tot = 0;
+		double tot = ZERO;
 		str += "Items\t\t\t\tCost\n";
 		for(Items temp: shopCart) {
 			str += temp.getName() + "\t\t\t\t" + dfMoney.format(temp.getCost()) + "\n";
