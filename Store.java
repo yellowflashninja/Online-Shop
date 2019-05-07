@@ -74,6 +74,21 @@ public class Store {
 	}
 	
 	/**
+	 * Description: sees if account is in database
+	 * @param user: username of user
+	 * @return if account is in database
+	 */
+	public boolean inDatabase(String user) {
+		for(Account temp: this.database) {
+			if(user.equals(temp.getUsername())) {
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	
+	/**
 	 * Description: returns boolean if item is in the store
 	 * @param item item being searched for in store
 	 * @return if item is in store
@@ -99,12 +114,14 @@ public class Store {
 		System.out.println("Password:");
 		pass = kb.nextLine();
 		if(this.inDatabase(user, pass)) {
-			System.out.println("Welcome back, " + user);
 			for(Account temp: this.getDatabase()) {
 				if(temp.getUsername().equals(user)) {
 					userInd = temp.getAccNum();
+					System.out.println("Welcome back, " + temp.getName());
 				}
 			}
+			
+			
 			
 			while(!dn) {
 				System.out.println("What would you like to do?\n1. Catalog\n2. See Cart\n3. Checkout\n4. Logout");
@@ -183,9 +200,15 @@ public class Store {
 		username = kb.nextLine();
 		System.out.println("New Password:");
 		password = kb.nextLine();
-		System.out.println("Please remember your username and password!!");
-		this.addToDatabase(new Account(username, password, name));
-		System.out.println("Please log back in");
+		if(this.inDatabase(username)) {
+			System.out.println("Username in use. Please choose another username.");
+			this.choiceTwo();
+		}
+		else {
+			System.out.println("Please remember your username and password!!");
+			this.addToDatabase(new Account(username, password, name));
+			System.out.println("Please log back in");
+		}
 	}
 	
 	
