@@ -7,6 +7,7 @@ import java.util.*;
 public class Cart {
 	DecimalFormat dfMoney  = new DecimalFormat ("$###,###,###,###0.00");
 	final int ZERO = 0;
+	final double TAX = .10;
 	
 	private ArrayList<Items> shopCart;
 
@@ -14,15 +15,21 @@ public class Cart {
 		shopCart = new ArrayList<Items>();
 	}
 	
+	/**
+	 * Description: prints the cart and the sum of the prices inside the cart
+	 * @return returns the string to be printed in the console
+	 */
 	public String toString() {
 		String str = "";
+		double sub = ZERO;
 		double tot = ZERO;
 		str += "Items\t\t\t\tCost\n";
 		for(Items temp: shopCart) {
 			str += temp.getName() + "\t\t\t\t" + dfMoney.format(temp.getCost()) + "\n";
-			tot += temp.getCost();
+			sub += temp.getCost();
 		}
-		str += "Total Price = " + dfMoney.format(tot);
+		str += "Subtotal = " + dfMoney.format(sub);
+		str += "\nTotal Price = " + dfMoney.format(sub * TAX + sub);
 		return str;
 	}
 	

@@ -10,10 +10,12 @@ public class Store {
 	
 	DecimalFormat dfMoney  = new DecimalFormat ("$###,###,###,##0.00");
 	Scanner kb = new Scanner(System.in);
+	
 	final int ZERO = 0;
 	final int ONE = 1;
-	private ArrayList<Items> itemList;
-	private ArrayList<Account> database;
+	final double TAX = .10;
+	private ArrayList<Items> itemList;		
+	private ArrayList<Account> database;	
 	
 	public Store() {
 		itemList = new ArrayList<Items>();
@@ -26,7 +28,6 @@ public class Store {
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
-	
 	public void inputItems() throws IOException, FileNotFoundException {
 		Scanner inF = new Scanner(new File("catalog.txt")); 
 		String name;
@@ -105,7 +106,8 @@ public class Store {
 	/**
 	 * Description: goes through the sign in process and online shopping process
 	 */
-	public void choiceOne() {
+	public void choiceOne() throws IOException, FileNotFoundException {
+		PrintWriter outF = new PrintWriter(new FileWriter("receipt.txt"));
 		boolean done = false, dn = false;
 		String user, pass;
 		int userInd = ZERO, itemInd = ZERO;
@@ -173,7 +175,9 @@ public class Store {
 					finalDec = kb.nextLine();
 					if(finalDec.equals("y")) {
 						System.out.println("Your items have been billed to " + card +". Thank you for shopping at JC Store!");
+						outF.println(this.getDatabase().get(userInd).getShoppingCart() + "\n\nThank you for shopping!");
 						x.getCart().clear();
+						
 					}	
 				}
 				else if(choice.equals("4")){

@@ -106,6 +106,10 @@ public class Account {
 		return shoppingCart;
 	}
 	
+	/**
+	 * Description: adds item to cart
+	 * @param item item to be added to the cart
+	 */
 	public void addToCart(Items item) {
 		this.getShoppingCart().add(item);		
 	}
