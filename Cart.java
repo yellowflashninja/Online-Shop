@@ -28,11 +28,18 @@ public class Cart {
 	
 	
 	
-	
+	/**
+	 * Description: returns shopping cart
+	 * @return returns arraylist of shopping cart items
+	 */
 	public ArrayList<Items> getCart() {
 		return shopCart;
 	}
 
+	/**
+	 * Description: adds item to the shopping cart
+	 * @param item item to be added to the cart
+	 */
 	public void add(Items item) {
 		shopCart.add(item);
 	}

@@ -14,10 +14,18 @@ public class Store {
 	final int ONE = 1;
 	private ArrayList<Items> itemList;
 	private ArrayList<Account> database;
+	
 	public Store() {
 		itemList = new ArrayList<Items>();
 		database = new ArrayList<Account>();
 	}
+	
+	/**
+	 * Description: Inputs the items from the catalog.txt file
+	 * 
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
 	
 	public void inputItems() throws IOException, FileNotFoundException {
 		Scanner inF = new Scanner(new File("catalog.txt")); 
@@ -39,11 +47,21 @@ public class Store {
 		}
 	}
 	
+	/**
+	 * Description: adds account to database
+	 * @param newAcc an account to be added to the store database
+	 */
 	public void addToDatabase(Account newAcc) {
 		this.database.add(newAcc);
 		
 	}
 	
+	/**
+	 * Description: sees if account is in database
+	 * @param user: username of user
+	 * @param pass: password of user
+	 * @return if account is in database
+	 */
 	public boolean inDatabase(String user, String pass) {
 		for(Account temp: this.database) {
 			if(user.equals(temp.getUsername()) && pass.equals(temp.getPassword())) {
@@ -55,6 +73,11 @@ public class Store {
 		
 	}
 	
+	/**
+	 * Description: returns boolean if item is in the store
+	 * @param item item being searched for in store
+	 * @return if item is in store
+	 */
 	public boolean inStore(String item) {
 		for(Items temp: this.itemList) {
 			if(item.equals(temp.getName())){
@@ -64,6 +87,9 @@ public class Store {
 		return false;
 	}
 	
+	/**
+	 * Description: goes through the sign in process and online shopping process
+	 */
 	public void choiceOne() {
 		boolean done = false, dn = false;
 		String user, pass;
@@ -146,6 +172,9 @@ public class Store {
 		}
 	}
 	
+	/**
+	 * Description: goes through the account making process
+	 */
 	public void choiceTwo() {
 		String username, password, name;
 		System.out.println("Create new account\nYour Name:");
