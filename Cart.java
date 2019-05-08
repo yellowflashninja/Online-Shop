@@ -23,12 +23,14 @@ public class Cart {
 		String str = "";
 		double sub = ZERO;
 		double tot = ZERO;
+		double taxDollar = ZERO;
 		str += "Items\t\t\t\tCost\n";
 		for(Items temp: shopCart) {
 			str += temp.getName() + "\t\t\t\t" + dfMoney.format(temp.getCost()) + "\n";
 			sub += temp.getCost();
 		}
 		str += "Subtotal = " + dfMoney.format(sub);
+		str += "\nTax = " + dfMoney.format(TAX * sub); 
 		str += "\nTotal Price = " + dfMoney.format(sub * TAX + sub);
 		return str;
 	}

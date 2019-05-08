@@ -107,7 +107,7 @@ public class Store {
 	 * Description: goes through the sign in process and online shopping process
 	 */
 	public void choiceOne() throws IOException, FileNotFoundException {
-		PrintWriter outF = new PrintWriter(new FileWriter("receipt.txt"));
+		
 		boolean done = false, dn = false;
 		String user, pass;
 		int userInd = ZERO, itemInd = ZERO;
@@ -164,6 +164,7 @@ public class Store {
 					System.out.println(this.getDatabase().get(userInd).getShoppingCart());
 				}
 				else if(choice.equals("3")) {
+					PrintWriter outF = new PrintWriter(new FileWriter("receipt.txt"));
 					String card = "", finalDec = "";
 					Cart x = this.getDatabase().get(userInd).getShoppingCart();
 					
@@ -175,8 +176,9 @@ public class Store {
 					finalDec = kb.nextLine();
 					if(finalDec.equals("y")) {
 						System.out.println("Your items have been billed to " + card +". Thank you for shopping at JC Store!");
-						outF.println(this.getDatabase().get(userInd).getShoppingCart() + "\n\nThank you for shopping!");
+						outF.print(this.getDatabase().get(userInd).getShoppingCart() + "\n\nThank you for shopping!");
 						x.getCart().clear();
+						outF.close();
 						
 					}	
 				}
