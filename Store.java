@@ -169,17 +169,19 @@ public class Store {
 						System.out.println("There is nothing in your cart!! Add items before checking out.");
 					}
 					else {
-						String card = "", finalDec = "";
+						String card = "", finalDec = "", address = "";
 						Cart x = this.getDatabase().get(userInd).getShoppingCart();
 					
 						System.out.println("YOUR BILL:");
 						System.out.println(this.getDatabase().get(userInd).getShoppingCart());
 						System.out.println("Please enter your credit card information\nCard Number:");
 						card = kb.nextLine();
+						System.out.println("House Address:");
+						address = kb.nextLine();
 						System.out.println("Are you sure you want to proceed? (y/n)");
 						finalDec = kb.nextLine();
 						if(finalDec.equals("y")) {
-							System.out.println("Your items have been billed to " + card +". Thank you for shopping at JC Store!");
+							System.out.println("Your items have been billed to \"" + card + "\" and will be sent to \"" + address + "\". Thank you for shopping at JC Store!");
 							this.getDatabase().get(userInd).getShoppingCart().printReceipt();
 							x.getCart().clear();
 						}	
