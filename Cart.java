@@ -40,6 +40,10 @@ public class Cart {
 		return str;
 	}
 	
+	/**
+	 * Description: Prints a receipt of items bought
+	 * @throws IOException
+	 */
 	public void printReceipt() throws IOException {
 		PrintWriter outF = new PrintWriter(new FileWriter("receipt.txt"));
 		String str = "";
